@@ -1,0 +1,11 @@
+.midagi {
+    color: blue;
+}
+
+.title {
+    color: red;
+    font-size: 20px;
+    background-color: yellow;
+    font-weight: bold;
+    margin: 10px;
+}
