@@ -1,1 +1,25 @@
-<p>cart works!</p>
+<div>{{ title }}</div>
+<div>{{ title2 }}</div>
+<div>{{ price }}</div>
+<div>{{ price2 }}</div>
+<div>{{ isActive }}</div>
+<div>{{ isActive2 }}</div>
+
+<br>
+<div *ngFor="let title of titles">{{ title }}</div>
+
+<br>
+<div>{{ item }}</div>
+<div>{{ item2 }}</div>
+<div>{{ item.title }}</div>
+<div>{{ item.price }}</div>
+<div>{{ item.isActive }}</div>
+<!-- ülejäänud 4 -->
+
+<br>
+<!-- itemList ---- ngFor ja võtme abil -->
+<div *ngFor="let item of itemList">
+    <div>{{ item.title }}</div>
+    <div>{{ item.price }}</div>
+    <div>{{ item.isActive }}</div>
+</div>
