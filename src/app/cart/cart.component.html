@@ -1,8 +1,51 @@
 <button (click)="onEmptyCart()">Tühjenda ostukorv</button>
 
-<div *ngFor="let cartItem of cartItems">
-    <div>{{ cartItem.title }}</div>
-    <div>{{ cartItem.price }}</div>
+<!-- REACT: <button onClick={function}>Tühjenda ostukorv</button> -->
+
+<!-- 
+   HTML:  <button id="id-mille-abil-saan-kätte">Tühjenda ostukorv</button>
+   JS: document.getElementById("id-mille-abil-saan-kätte").addEventListener("click",()=>{})
+ -->
+
+ <!-- cartItems=[{title:"Ese1", price: "123",...},{...},{...}] -->
+<!-- cartItem={title:"Ese1", price: "123",...} -->
+ <div *ngFor="let cartItem of cartItems">
+    <div>{{ cartItem.title }}</div>  <!-- cartItem.title="Ese1" -->
+    <div>{{ cartItem.price }}</div> <!-- cartItem.title="123" -->
     <div>{{ cartItem.imgSrc }}</div>
-    <button (click)="onRemoveFromCart(cartItem)">X</button>
+    <button (click)="onRemoveFromCart(cartItem)">X</button> <!-- TS: onRemoveFromCart({title:"Ese1", price: "123",...}) 
+                                                                    onRemoveFromCart({title:"Ese1", price: "123",...}) {
+                                                                        console.log({title:"Ese1", price: "123",...})
+                                                                        let index = this.cartItems.indexOf(cartItem);
+                                                                        teen uue lokaalse muutuja index, mille nimi on suvaline (ise valisin)
+                                                                        -miks lokaalne: sest mul on selle muutja väärtust vaja vaid kohe järgmisel real
+                                                                        (kasutan teda ainult siin funktsioonis)
+                                                                        -teine variant let index muutujale on klassimuutuja:
+                                                                                lisan class üles index ja pöördun selle poole this.index abil
+                                                                                cartItems = []
+
+                                                                                kui pöördun selle poole, siis this.cartItems
+
+                                                                        -miks cartItems klassimuutuja
+                                                                            klassimuutujaid saan kasutada mitmes funktsioonis ja/või HTML-s
+
+                                                                        terve projekti saan kirjutada ilma let muutujateta, see tähendab, et kõiki muutujaid
+                                                                        saan kasutada HTML-s ja mitmes funktsioonis, aga ilus ja korrektne on, et kui ma kasutan
+                                                                        midagi vaid ühes funktsioonis, siis ta on let muutuja
+
+
+                                                                        let index = this.cartItems.indexOf(cartItem);
+
+                                                                        <!-- indexOf funktsioone saan kasutada massiividele
+                                                                        kui kirjutan muutuja välja ja vajutan ".", siis ta pakub mida kõike ma selle muutujaga teha saan
+                                                                    
+                                                                        let index = [{title:"Ese1", price: "123",...},{...},{...}].indexOf({title:"Ese1", price: "123",...});
+                                                                        let index = 0;
+
+                                                                        this.cartItems.splice(index, 1);
+                                                                        [{title:"Ese1", price: "123",...},{...},{...}].splice(0,1);
+                                                                        -->
+                                                                    }-->
 </div>
+
+<div>{{ sumOfCart }}</div>
