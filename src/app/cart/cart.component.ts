@@ -9,6 +9,7 @@ import { CartService } from '../services/cart.service';
 export class CartComponent implements OnInit {
   cartItems: any[] = [];
 
+// Service-i componenti lisamine, et saaks andmeid Componentide vahel liigutada
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
