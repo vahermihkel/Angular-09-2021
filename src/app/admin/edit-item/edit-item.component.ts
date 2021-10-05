@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-item.component.css']
 })
 export class EditItemComponent implements OnInit {
+  id!: any;
+  item!: any;
 
   constructor() { }
 

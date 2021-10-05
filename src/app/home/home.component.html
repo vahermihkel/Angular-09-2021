@@ -1,5 +1,6 @@
 <div *ngFor="let item of items">
-    <img src="{{ item.imgSrc }}" alt="">
+    <img routerLink="ese/{{item.title}}" src="{{ item.imgSrc }}" alt="">
+    <!-- routerLink="ese/{{item.title}}/{{item.price}}/{{item.title}}/test/{{item.category}}" src="{{ item.imgSrc }}" alt=""> -->
     <div>{{ item.title }}</div>
     <div>{{ item.price }}</div>
     <div>{{ item.category }}</div>
