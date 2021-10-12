@@ -7,4 +7,5 @@
     <div>{{ item.category }}</div>
     <div>{{ item.isActive }}</div>
     <button (click)="onRemoveItem(item)">Kustuta</button>
+    <button routerLink="/admin/muuda-ese/{{item.title}}">Muuda</button>
 </div>

@@ -11,14 +11,16 @@ import { ViewComponent } from './home/view/view.component';
 // router-outlet asemele tuleb parempoolne component, vastavalt sellele mis on path (url)
 // localhost:4200/ järel
 const routes: Routes = [
+  // {path: localhost:4200, component: home.component.html + .css ja .ts}
   { path: "", component: HomeComponent },
+  // {path: localhost:4200/ostukorv, component: cart.component.html + .css ja .ts}
   { path: "ostukorv", component: CartComponent },
   //   { path: "ese/:itemId/:price/:itemTitle/test/:category", component: ViewComponent },
 
   { path: "ese/:itemId", component: ViewComponent },
   { path: "admin", component: AdminHomeComponent },
   { path: "admin/lisa-ese", component: AddItemComponent },
-  { path: "admin/muuda-ese", component: EditItemComponent },
+  { path: "admin/muuda-ese/:itemId", component: EditItemComponent },
   { path: "admin/esemed", component: ViewItemsComponent },
 ];
 

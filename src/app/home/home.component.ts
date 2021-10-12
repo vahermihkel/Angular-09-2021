@@ -8,6 +8,7 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  // kooloniga annan tüübi, võrdusmärgiga väärtuse
   items: any[] = [];
 
 
@@ -20,13 +21,13 @@ export class HomeComponent implements OnInit {
   constructor(private cartService: CartService,
     private itemService: ItemService) { }
 
-  // täitke items itemsInService väärtusega
-  // lahendus on CartComponent sees olemas
   ngOnInit(): void {
     console.log("jõudsin home componenti");
     this.items = this.itemService.itemsInService;
   }
 
+    // saates peab olema see muutuja olemas
+    // vastuvõttes peab olema tüüp
   onAddToCart(item: any) {
     this.cartService.cartItemsInService.push(item);
   }

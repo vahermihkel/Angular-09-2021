@@ -1,3 +1,8 @@
+<!-- 1. otsitakse üles .ts failist muutuja nimega "items"
+    2. selle asemele tuleb väärtus [{title:"",price:21,...},{...},{...}]
+    3. ngFor html sisu korratakse nii mitu korda kui palju neid elemente on
+    4. muutuja mis on kirjutatud "let" järel muutub nii palju kui neid elemente on
+    5. kuna tegemist on objektiga, pean väärtustele ligipääsemiseks kasutama võtit -->
 <div *ngFor="let item of items">
     <img routerLink="ese/{{item.title}}" src="{{ item.imgSrc }}" alt="">
     <!-- routerLink="ese/{{item.title}}/{{item.price}}/{{item.title}}/test/{{item.category}}" src="{{ item.imgSrc }}" alt=""> -->

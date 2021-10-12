@@ -1,13 +1,12 @@
-<!-- <div class="midagi">midagi</div>
+<!-- app.component.html on alati nähtav, kõik mis siin sees on, on kõikidel lehtedel -->
 
-<div class="title">{{ title }}</div> -->
+
+<!-- siin võtan kasutusele navbar.component.html-i,
+saan komplektis kaasa .css faili ja .ts faili
+.css on kujunduseks
+.ts on dünaamilisuse jaoks -->
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
 
-<!-- 
-  lisa ülemisele {{title}}-le div, millel on klass
-  "title", lisa css kus:
-  värvi tekst punaseks
-  muuda tekst suuremaks - font-size: 20px;
-  lisa taustavärviks kollane---- background-color: yellow;
- -->
+<!-- võtab app-routing.module.ts failist kõik seosed ja näitab vastavat componenti,
+          mis URL-l ollakse  -->
+<router-outlet></router-outlet>
