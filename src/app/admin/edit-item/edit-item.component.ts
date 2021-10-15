@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -12,11 +13,15 @@ export class EditItemComponent implements OnInit {
   id!: any;
   item!: any;
   editItemForm!: FormGroup;
+  categories: string[] = [];
 
   constructor(private route: ActivatedRoute,
-    private itemService: ItemService) { }
+    private itemService: ItemService,
+    private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.categories = this.categoryService.categoriesInService;
+
     this.id = this.route.snapshot.paramMap.get("itemId");
     this.item = this.itemService.itemsInService.find(item => item.title == this.id);
 
