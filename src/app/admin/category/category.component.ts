@@ -8,7 +8,7 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  categories: any[] = [];
+  categories: string[] = [];
 
   // ühendus categoryService-ga
   constructor(private categoryService: CategoryService) { }
@@ -18,7 +18,7 @@ export class CategoryComponent implements OnInit {
     this.categories = this.categoryService.categoriesInService;
   }
 
-  onDeleteCategory(category: any) {
+  onDeleteCategory(category: string) {
     let index = this.categoryService.categoriesInService.indexOf(category);
     this.categoryService.categoriesInService.splice(index, 1);
     this.categories = this.categoryService.categoriesInService;
