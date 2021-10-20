@@ -1,6 +1,6 @@
 <button routerLink="/admin/esemed">Tagasi</button>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="editItemForm">
+<form *ngIf="item" (ngSubmit)="onSubmit()" [formGroup]="editItemForm">
     <label>Pealkiri</label><br>
     <input formControlName="title" type="text" required><br>
 
@@ -19,8 +19,10 @@
     <label>Nähtav</label><br>
     <input formControlName="isActive" type="checkbox" required><br>
 
-    <button [disabled]="editItemForm.invalid">Lisa ese</button>
+    <button [disabled]="editItemForm.invalid">Muuda ese</button>
 </form>
+
+<div *ngIf="!item">Eset ei leitud</div>
 
 <!-- <form (ngSubmit)="onSubmit()" #form="ngForm">
 </form> -->

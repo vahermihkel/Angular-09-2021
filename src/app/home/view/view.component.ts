@@ -10,6 +10,7 @@ import { ItemService } from 'src/app/services/item.service';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
+  // hüüumärgiga ei anna koheselt väärtust
   id!: string;
   item!: Item; // { imgSrc: "https://i.ebayimg.com/", title: "1005", price: 3.75, category: "comics", isActive: true }
 

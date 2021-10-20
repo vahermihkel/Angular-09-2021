@@ -27,4 +27,8 @@ export class ViewItemsComponent implements OnInit {
   // TS-i sees võtab eseme vastu, otsib üles indeksi ja 
   // kustutab itemService seest selle indeksiga eseme
 
+  onAddItemsToDatabase() {
+    this.itemService.addItemsToDatabase().subscribe();
+  }
+
 }
