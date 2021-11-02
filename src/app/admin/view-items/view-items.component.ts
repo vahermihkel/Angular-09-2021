@@ -13,12 +13,17 @@ export class ViewItemsComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    this.items = this.itemService.itemsInService;
+    // this.items = this.itemService.itemsInService;
+    this.itemService.getItemsFromDatabase().subscribe(itemsFromDb => {
+      this.itemService.itemsInService = itemsFromDb;
+      this.items = itemsFromDb;
+    });
   }
 
   onRemoveItem(item: Item) {
     let index = this.itemService.itemsInService.indexOf(item);
     this.itemService.itemsInService.splice(index, 1);
+    this.itemService.addItemsToDatabase().subscribe();
     this.items = this.itemService.itemsInService;
   }
   // nupp "kustuta ese" - peale klikkides kutsub välja TS-s funktsiooni ja 

@@ -19,7 +19,10 @@ export class ViewComponent implements OnInit {
     private cartService: CartService) { }
 
   ngOnInit(): void {
-    let urlId = this.route.snapshot.paramMap.get("itemId");
+    this.itemService.getItemsFromDatabase().subscribe(itemsFromDb => {
+      this.itemService.itemsInService = itemsFromDb;
+
+      let urlId = this.route.snapshot.paramMap.get("itemId");
     if (urlId) {
       this.id = urlId;
     }
@@ -37,6 +40,8 @@ export class ViewComponent implements OnInit {
                     // .find({title:"Ese1"} => "Ese1" == "itemId kaudu välja URL-st")
                     // .find({title:"Ese2"} => "Ese2" == "itemId kaudu välja URL-st")
                     // .find({title:"Ese3"} => "Ese3" == "itemId kaudu välja URL-st")
+
+    });
   }
 
   onAddToCart(item: Item) {

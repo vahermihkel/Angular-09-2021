@@ -17,8 +17,8 @@
 <!-- cartItem={title:"Ese1", price: "123",...} -->
  <div *ngFor="let cartItem of cartItems">
     <div>{{ cartItem.title }}</div>  <!-- cartItem.title="Ese1" -->
-    <div>{{ cartItem.price }}</div> <!-- cartItem.title="123" -->
-    <div>{{ cartItem.imgSrc }}</div>
+    <div>{{ cartItem.price | itemPrice }}</div> <!-- cartItem.title="123" -->
+    <img src="{{ cartItem.imgSrc }}" alt="">
     <button (click)="onRemoveFromCart(cartItem)">X</button> <!-- TS: onRemoveFromCart({title:"Ese1", price: "123",...}) 
                                                                     onRemoveFromCart({title:"Ese1", price: "123",...}) {
                                                                         console.log({title:"Ese1", price: "123",...})
@@ -54,4 +54,4 @@
                                                                     
 </div>
 
-<div *ngIf="cartItems.length > 0">{{ sumOfCart }}</div>
+<div *ngIf="cartItems.length > 0">{{ sumOfCart  | itemPrice }}</div>

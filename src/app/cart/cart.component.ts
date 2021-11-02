@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cartService.cartItemsInService = JSON.parse(localStorage.getItem("cart") as string) || [];
     console.log("jõudsin cart componenti");
     this.cartItems = this.cartService.cartItemsInService;
     // = this. ---- näitab kõik mis on siin klassi sees
@@ -43,6 +44,7 @@ export class CartComponent implements OnInit {
     // array.forEach(muutuja=>)
     // minnakse nii mitu korda funktsiooni tegema
     // ---- nii mitu korda kui on elemente massiivis
+    localStorage.setItem("cart", JSON.stringify(this.cartService.cartItemsInService));
   }
 
   // :{ title: string, price: number, imgSrc: string, category: string; isActive: boolean }
@@ -53,6 +55,7 @@ export class CartComponent implements OnInit {
 
     this.sumOfCart = 0;
     this.cartItems.forEach(cartItem => this.sumOfCart = this.sumOfCart + cartItem.price);
+    localStorage.setItem("cart", JSON.stringify(this.cartService.cartItemsInService));
   }
 
 

@@ -17,6 +17,9 @@ export class AddItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.categories = this.categoryService.categoriesInService;
+    this.itemService.getItemsFromDatabase().subscribe(itemsFromDb => {
+      this.itemService.itemsInService = itemsFromDb;
+    });
   }
 
   onChangeTitle() {
@@ -27,6 +30,9 @@ export class AddItemComponent implements OnInit {
     if (addItemForm.valid) {
       console.log(addItemForm);
       this.itemService.itemsInService.push(addItemForm.value);
+      this.itemService.addItemsToDatabase().subscribe(() => {
+        addItemForm.reset();
+      });
     }
   }
 }

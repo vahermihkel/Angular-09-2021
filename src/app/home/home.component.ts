@@ -9,6 +9,11 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  // kuupaev = new Date();
+  // number = 500000000.99;
+
+
+
   // kooloniga annan tüübi, võrdusmärgiga väärtuse
   items: Item[] = [];
 
@@ -24,13 +29,29 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("jõudsin home componenti");
-    this.items = this.itemService.itemsInService;
+    // this.items = this.itemService.itemsInService;
+    // võtmise pool ümber teha (vt view-items)
+    this.itemService.getItemsFromDatabase().subscribe(itemsFromDb => {
+      this.itemService.itemsInService = itemsFromDb;
+      this.items = itemsFromDb;
+    });
   }
 
   // saates peab olema see muutuja olemas
   // vastuvõttes peab olema tüüp
   onAddToCart(item: Item) {
+    // lisab service-i sisse vasakul pool võrdusmärki
+    // paremal pool võrdusmärki annab väärtust
+    // võtab brauseri localStorage seest võtme "cart" abil väärtused
+    // kartis, et ei saa kätte (on tühi) ja seega pidin tegema "as string"
+    // seejärel teen selle stringi (kui sai kätte või ei saanud kätte - mõlemal juhul)
+    //        JSON kujule JSON.parse abil
+    // kui ta ei saanud korrektsel JSON kujule teha, siis paneb asemel tühja massiivi
+    this.cartService.cartItemsInService = JSON.parse(localStorage.getItem("cart") as string) || [];
     this.cartService.cartItemsInService.push(item);
+    // panen localStoragesse, annan võtmeks "cart"
+    // väärtuse teen "string" kujule, sest localStorage nõuab kõiki väärtuseid string kujul
+    localStorage.setItem("cart", JSON.stringify(this.cartService.cartItemsInService));
   }
 
   onSortTitleAsc() {
