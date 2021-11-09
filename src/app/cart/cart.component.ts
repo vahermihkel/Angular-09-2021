@@ -45,6 +45,7 @@ export class CartComponent implements OnInit {
     // minnakse nii mitu korda funktsiooni tegema
     // ---- nii mitu korda kui on elemente massiivis
     localStorage.setItem("cart", JSON.stringify(this.cartService.cartItemsInService));
+    this.cartService.cartItemsChanged.next();
   }
 
   // :{ title: string, price: number, imgSrc: string, category: string; isActive: boolean }
@@ -56,6 +57,7 @@ export class CartComponent implements OnInit {
     this.sumOfCart = 0;
     this.cartItems.forEach(cartItem => this.sumOfCart = this.sumOfCart + cartItem.price);
     localStorage.setItem("cart", JSON.stringify(this.cartService.cartItemsInService));
+    this.cartService.cartItemsChanged.next();
   }
 
 

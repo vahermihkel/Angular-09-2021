@@ -3,5 +3,9 @@
     <button routerLink="admin">{{'Admini vaatesse' | translate}}</button>
     <button (click)="useLanguage('en')">EN</button>
     <button (click)="useLanguage('ee')">EE</button>
-    <img class="cart-button" routerLink="ostukorv" src="assets/cart.svg" alt="">
+    <div>
+        <img class="cart-button" routerLink="ostukorv" src="assets/cart.svg" alt="">
+        <div>{{ sumOfCart | itemPrice }}</div>
+    </div>
+   
 </div>

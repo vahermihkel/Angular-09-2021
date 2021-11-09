@@ -1,18 +1,16 @@
-<!-- <br><br>
+<input 
+    type="range" 
+    min="0" 
+    max="20" 
+    [(ngModel)]="itemWordCount">
+<br><br>
 
+<!-- <br><br>
 <div>{{ kuupaev | date }}</div>
 <div>{{ number | percent }}</div>
 <div>{{ kuupaev | date | uppercase }}</div>
 <div>{{ number | currency }}</div>
-
-
 <br><br><br> -->
-
-<!-- 1. otsitakse üles .ts failist muutuja nimega "items"
-    2. selle asemele tuleb väärtus [{title:"",price:21,...},{...},{...}]
-    3. ngFor html sisu korratakse nii mitu korda kui palju neid elemente on
-    4. muutuja mis on kirjutatud "let" järel muutub nii palju kui neid elemente on
-    5. kuna tegemist on objektiga, pean väärtustele ligipääsemiseks kasutama võtit -->
 
 <button (click)="onSortTitleAsc()">Sorteeri A-Z</button>
 <button (click)="onSortTitleDesc()">Sorteeri Z-A</button>
@@ -22,13 +20,15 @@
 <br><br>
 
 <div *ngFor="let item of items">
-    <img routerLink="ese/{{item.title}}" src="{{ item.imgSrc }}" alt="">
-    <!-- routerLink="ese/{{item.title}}/{{item.price}}/{{item.title}}/test/{{item.category}}" src="{{ item.imgSrc }}" alt=""> -->
-    <div>{{ item.title }}</div>
-    <div>{{ item.price | itemPrice }}</div>
-    <div>{{ item.category }}</div>
-    <div>{{ item.isActive }}</div>
-    <button (click)="onAddToCart(item)">{{'Lisa ostukorvi' | translate  }}</button>
+    <div *ngIf="item.isActive">
+        <img routerLink="ese/{{item.title}}" src="{{ item.imgSrc }}" alt="">
+        <!-- routerLink="ese/{{item.title}}/{{item.price}}/{{item.title}}/test/{{item.category}}" src="{{ item.imgSrc }}" alt=""> -->
+        <div>{{ item.title | shortenTitle:itemWordCount }}</div>
+        <div>{{ item.price | itemPrice }}</div>
+        <div>{{ item.category }}</div>
+        <div>{{ item.isActive }}</div>
+        <button (click)="onAddToCart(item)">{{'Lisa ostukorvi' | translate  }}</button>
+    </div>
 </div>
 
 <!-- 

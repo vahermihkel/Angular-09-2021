@@ -36,4 +36,11 @@ export class ViewItemsComponent implements OnInit {
     this.itemService.addItemsToDatabase().subscribe();
   }
 
+  onChangeItemActive(item: Item) {
+    let index = this.itemService.itemsInService.indexOf(item);
+    let itemFound = this.itemService.itemsInService[index];
+    itemFound.isActive = !itemFound.isActive;
+    this.itemService.addItemsToDatabase().subscribe();
+  }
+
 }

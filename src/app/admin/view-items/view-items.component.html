@@ -6,12 +6,14 @@
 
 <br><br>
 
-<div *ngFor="let item of items">
-    <div>{{ item.imgSrc }}</div>
-    <div>{{ item.title }}</div>
-    <div>{{ item.price | itemPrice }}</div>
-    <div>{{ item.category }}</div>
-    <div>{{ item.isActive }}</div>
+<div [ngClass]="{active: item.isActive, inactive: !item.isActive}" *ngFor="let item of items">
+    <div (click)="onChangeItemActive(item)">
+        <div>{{ item.imgSrc }}</div>
+        <div>{{ item.title }}</div>
+        <div>{{ item.price | itemPrice }}</div>
+        <div>{{ item.category }}</div>
+        <div>{{ item.isActive }}</div>
+    </div>
     <button (click)="onRemoveItem(item)">Kustuta</button>
     <button routerLink="/admin/muuda-ese/{{item.title}}">Muuda</button>
 </div>

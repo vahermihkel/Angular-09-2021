@@ -9,6 +9,8 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  itemWordCount = 3;
+
   // kuupaev = new Date();
   // number = 500000000.99;
 
@@ -52,6 +54,7 @@ export class HomeComponent implements OnInit {
     // panen localStoragesse, annan võtmeks "cart"
     // väärtuse teen "string" kujule, sest localStorage nõuab kõiki väärtuseid string kujul
     localStorage.setItem("cart", JSON.stringify(this.cartService.cartItemsInService));
+    this.cartService.cartItemsChanged.next();
   }
 
   onSortTitleAsc() {
