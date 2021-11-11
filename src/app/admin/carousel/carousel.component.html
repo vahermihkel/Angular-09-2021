@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit(addImageForm)" #addImageForm="ngForm">
+    <label for="">Pildi url</label> <br>
+    <input ngModel name="url" type="text"> <br>
+    <label for="">Pildi pealkiri</label> <br>
+    <input ngModel name="header" type="text"> <br>
+    <label for="">Pildi sisu</label> <br>
+    <input ngModel name="text" type="text"> <br> 
+    <label for="">Pildi alternatiivtekst</label> <br>
+    <input ngModel name="alt" type="text"> <br>
+    <button>Lisa pilt</button>
+</form>
+
+<div *ngFor="let image of carouselImages">
+    <!-- <div>{{ image.url }}</div> -->
+    <img src="{{ image.url }}" alt="">
+    <div>{{ image.header }}</div>
+    <div>{{ image.text }}</div>
+    <div>{{ image.alt }}</div>
+    <button (click)="onRemoveImage(image)">X</button>
+    <br><br>
+</div>

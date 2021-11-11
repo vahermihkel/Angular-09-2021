@@ -1,8 +1,8 @@
 <div class="navbar">
     <img class="logo" routerLink="/" src="assets/webshio.png" alt="">
-    <button routerLink="admin">{{'Admini vaatesse' | translate}}</button>
-    <button (click)="useLanguage('en')">EN</button>
-    <button (click)="useLanguage('ee')">EE</button>
+    <button class="btn-primary" routerLink="admin">{{'Admini vaatesse' | translate}}</button>
+    <button class="btn-primary" (click)="useLanguage('en')">EN</button>
+    <button class="btn-primary" (click)="useLanguage('ee')">EE</button>
     <div>
         <img class="cart-button" routerLink="ostukorv" src="assets/cart.svg" alt="">
         <div>{{ sumOfCart | itemPrice }}</div>

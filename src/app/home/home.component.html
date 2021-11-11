@@ -1,3 +1,23 @@
+<ngb-carousel class="carousel-wrapper" *ngIf="images">
+    <ng-template *ngFor="let image of images" ngbSlide>
+      <div class="picsum-img-wrapper">
+          <!-- [src]="images[0]" -->    
+                                        <!-- .alt -->
+        <img src="{{image.url}}" alt="{{image.alt}}">
+      </div>
+      <div class="carousel-caption">
+          <!--võta kasutusele see võti,et saada väärtus
+             .header -->
+        <h3>{{ image.header }}</h3>
+            <!-- .text -->
+        <p>{{ image.text }}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+
+
+
 <input 
     type="range" 
     min="0" 
@@ -21,7 +41,7 @@
 
 <div *ngFor="let item of items">
     <div *ngIf="item.isActive">
-        <img routerLink="ese/{{item.title}}" src="{{ item.imgSrc }}" alt="">
+        <img class="item-img" routerLink="ese/{{item.title}}" src="{{ item.imgSrc }}" alt="">
         <!-- routerLink="ese/{{item.title}}/{{item.price}}/{{item.title}}/test/{{item.category}}" src="{{ item.imgSrc }}" alt=""> -->
         <div>{{ item.title | shortenTitle:itemWordCount }}</div>
         <div>{{ item.price | itemPrice }}</div>

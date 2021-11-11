@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddItemComponent } from './admin/add-item/add-item.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CarouselComponent } from './admin/carousel/carousel.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { EditItemComponent } from './admin/edit-item/edit-item.component';
 import { AddUserComponent } from './admin/users/add-user/add-user.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: "admin/kasutajad/vaata-kasutajaid", component: ViewUsersComponent },
   { path: "admin/kasutajad/lisa-kasutaja", component: AddUserComponent },
   { path: "admin/kasutajad/muuda-kasutaja", component: EditUserComponent },
+  { path: "admin/galerii", component: CarouselComponent },
 ];
 
 @NgModule({

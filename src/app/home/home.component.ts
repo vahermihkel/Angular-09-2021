@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CarouselImage } from '../models/carousel-image.model';
 import { Item } from '../models/item.model';
+import { CarouselService } from '../services/carousel.service';
 import { CartService } from '../services/cart.service';
 import { ItemService } from '../services/item.service';
 
@@ -9,12 +11,12 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  itemWordCount = 3;
+  //images = [700, 533, 807, 124].map(image => `https://picsum.photos/id/${image}/900/500`);
+  images: CarouselImage[] = [];
 
+  itemWordCount = 3;
   // kuupaev = new Date();
   // number = 500000000.99;
-
-
 
   // kooloniga annan tüübi, võrdusmärgiga väärtuse
   items: Item[] = [];
@@ -27,9 +29,11 @@ export class HomeComponent implements OnInit {
   // hea tava on panna MUUTUJA_NIMI mis on ühendatava 
   //    faili nimetus väikse tähega
   constructor(private cartService: CartService,
-    private itemService: ItemService) { }
+    private itemService: ItemService,
+    private carouselService: CarouselService) { }
 
   ngOnInit(): void {
+    this.images = this.carouselService.carouselImagesInService;
     console.log("jõudsin home componenti");
     // this.items = this.itemService.itemsInService;
     // võtmise pool ümber teha (vt view-items)
